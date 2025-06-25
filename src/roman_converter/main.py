@@ -1,5 +1,5 @@
 import typer
-from roman_converter.converter import romanToInt
+from roman_converter.converter import RomanToInt
 from typing import Annotated
 
 app = typer.Typer(
@@ -7,10 +7,10 @@ app = typer.Typer(
     help="A converter for Roman numerals to integers and vice versa")
 
 # Initialize the converter
-converter = romanToInt()
+converter = RomanToInt()
 
 @app.command()
-def convert_roman_to_int(
+def roman_to_int(
     roman_string: str = typer.Argument(..., help="Roman numeral string to convert to integer")
 ):
     result = converter.roman_to_int(roman_string)
@@ -27,9 +27,6 @@ def int_to_roman(
             )
     ] = False
 ):
-    if not isinstance(integer_value, int):
-        typer.echo("Please provide a valid interger value.")
-        raise typer.Exit(code=1)
     
     if not confirm:
         typer.echo("Conversion stopped by user.")
