@@ -1,0 +1,17 @@
+[project]
+name = "roman-converter"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "typer>=0.16.0",
+]
+
+[project.scripts]
+roman_converter = "roman_converter:main"
+converter = "roman_converter.main:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
