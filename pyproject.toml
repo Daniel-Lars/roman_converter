@@ -15,9 +15,18 @@ dependencies = [
 roman_converter = "roman_converter:main"
 converter = "roman_converter.main:app"
 
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.4.1",
+]
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+log_cli = true
+log_cli_level = "INFO"
 
 [tool.ruff.format]
 # Like Black, use double quotes for strings.

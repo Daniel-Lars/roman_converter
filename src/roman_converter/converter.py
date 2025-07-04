@@ -3,7 +3,7 @@ import logging
 from roman_converter.custom_errors import InvalidIntegerError
 
 logging.basicConfig(
-    level=logging.DEBUG,
+    level=logging.ERROR,
     format="%(asctime)s - %(levelname)s - %(message)s",
     style="%",
     datefmt="%Y-%m-%d %H:%M:%S",
@@ -11,7 +11,8 @@ logging.basicConfig(
 
 
 class RomanToInt:
-    roman = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+    def __init__(self):
+        self.roman = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
 
     def roman_to_int(self, roman_string: str) -> int:
         if not isinstance(roman_string, str):
@@ -31,9 +32,8 @@ class RomanToInt:
             else:
                 total += cur_value
             prev_value = cur_value
-            print(f"Total at iterration {n}: {total}")
 
-        return print(f"Roman number {roman_string} converted to: {total}")
+        return total
 
     def int_to_roman(self, n):
         if not isinstance(n, int):
@@ -42,21 +42,16 @@ class RomanToInt:
         val = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
         syms = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"]
 
-        roman = ""
+        result = ""
         for i in range(len(val)):
             count = n // val[i]
-            roman += syms[i] * count
+            result += syms[i] * count
             n -= val[i] * count
-        return print(roman)
+        return result
 
 
 if __name__ == "__main__":
     converter = RomanToInt()
-
-    input_1 = "IX"  # 9
-    input_2 = "III"
-    input_3 = "CDXLIII"  # 443
-    input_4 = "9asdasd"
-
-    converter.roman_to_int(input_2)
-    converter.int_to_roman(input_4)
+    print(converter.roman_to_int("XII"))  # Example usage
+    print(converter.int_to_roman(12))  # Example usage
+    # Add more test cases as needed
