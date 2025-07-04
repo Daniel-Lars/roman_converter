@@ -5,6 +5,9 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
+    "isort>=6.0.1",
+    "pre-commit>=4.2.0",
+    "ruff>=0.12.2",
     "typer>=0.16.0",
 ]
 
@@ -15,3 +18,7 @@ converter = "roman_converter.main:app"
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[tool.ruff.format]
+# Like Black, use double quotes for strings.
+quote-style = "double"
