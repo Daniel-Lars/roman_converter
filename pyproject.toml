@@ -12,7 +12,6 @@ dependencies = [
 ]
 
 [project.scripts]
-roman_converter = "roman_converter:main"
 converter = "roman_converter.main:app"
 
 [project.optional-dependencies]
